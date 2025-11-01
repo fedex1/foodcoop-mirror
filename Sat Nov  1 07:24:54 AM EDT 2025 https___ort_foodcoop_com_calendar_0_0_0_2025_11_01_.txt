@@ -1,0 +1,35 @@
+Please wait ....
+
+[![](/staticfiles/images/logo.png)](https://foodcoop.com/)
+
+[Join the Coop](/home/)
+
+Welcome fedex1!
+
+  * [Home](/home/)
+  * [1\. Profile](/profile/)
+  * [2\. Calendar](/calendar/)
+  * [Logout](/logout/)
+
+  * 😔 Sorry, all appointments are currently taken. Please try again some other time. x︎
+
+## Appointment Calendar
+
+  * Click on or tap an appointment below to read details and sign up. Your scheduled appointment will appear in the calendar with a ✅ green check mark.
+
+  * Schedule an appointment in advance, up to 30 minutes before the appointment begins. Cancel as late as 11:59 p.m. the night before.
+
+  * Appointments generally start Tuesdays at 6pm, Wednesdays at 10:30am & 5pm, and Sundays at 4pm.
+
+##### You Have No Upcoming Appointments
+
+When you schedule an appointment it will be listed here.
+
+You can return to your appointment details page and **cancel as late as 11:59
+p.m. the night before**. After that point you cannot cancel your appointment.
+
+**Please refresh your search results using the "Find appointments" button
+above.**
+
+|  |  [Next Week ->](/calendar/1/0/0/2025-11-01/) **Sat  11/1/2025** \-- No appointments -- **Sun  11/2/2025** \-- No appointments -- **Mon  11/3/2025** \-- No appointments -- **Tue  11/4/2025** \-- No appointments -- **Wed  11/5/2025** \-- No appointments -- **Thu  11/6/2025** \-- No appointments -- **Fri  11/7/2025** \-- No appointments -- |  |  |  [Next Week ->](/calendar/1/0/0/2025-11-01/) [Foodcoop.com](https://foodcoop.com/) | [Member Services](https://foodcoop.com/services) Build 1921111  
+
