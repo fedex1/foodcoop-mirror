@@ -1,0 +1,469 @@
+
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+   	<link rel="icon" type="image/png" href="/staticfiles/images/favicon.png">
+    <style>@import url( /staticfiles/js/DataTables/datatables.min.css );</style>
+    <style>@import url( /staticfiles/css/base.css );</style>
+    <style>@import url( /staticfiles/css/messages.css );</style>
+    <script src='/staticfiles/js/jquery-3.6.0.min.js'></script>
+    <script src='/staticfiles/js/messages.js'></script>
+    <script src="/staticfiles/js/DataTables/datatables.min.js"></script>     
+    
+
+<style>
+
+.grid_2up {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+    overflow: auto;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-column-gap: 5px;
+    grid-row-gap: 20px;
+    overflow: auto;
+}
+
+.grid-container .col {
+    background-color: rgba(253, 219, 116, 0.15);
+    padding: 10px;
+    border-top: 2px solid rgba(253, 219, 116,1);
+}
+
+.grid-container .shift {
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #fff;
+    display: block;
+    position: relative;    
+}
+
+.shift {
+    font-size: 11pt;
+}
+
+.shift.my_shift {
+    border: 1px solid black;
+    background-color: #fff;
+    color: #000;
+}
+
+.shift.my_shift::after {
+    content:"✅";
+    position: absolute;
+    top: 2px;
+    right: 3px;
+}
+
+.shift.worker {
+/*     border: 1px solid black; */
+    background-color: rgba(255, 255, 256, 0.5);
+    color: #666;
+/*     opacity: 0.75; */
+}
+
+.shift.worker::after {
+    content:"😀";
+    position: absolute;
+    top: 2px;
+    right: 3px;
+}
+
+.shift.unavail {
+    background-color: #ddd;
+    color: #666;
+}
+
+.shift.unavail::after {
+    content:"🔒";
+    position: absolute;
+    top: 2px;
+    right: 3px;
+}
+
+.shift.cancelled, .cancelled {
+    border: 1px solid #ccc;
+    background-color: rgba(204,0,0,0.3);
+    color: #c00;
+}
+
+.shift.cancelled::after {
+    content:"❌";
+    position: absolute;
+    top: 2px;
+    right: 3px;
+    font-size: 10px;
+}
+
+
+.shift.resolved::after {
+    content:"®";
+    position: absolute;
+    top: 0px;
+    right: 3px;
+    font-size: 20px;
+}
+
+.shift.no_show::before {
+    content:"№";
+    position: absolute;
+    bottom: 2px;
+    right: 4px;
+    font-size: 15px;
+}
+
+
+@media screen and (max-width:768px){
+    .grid-container {
+        grid-template-columns: 1fr;
+    }
+    .grid_2up {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* 
+a.add_link   {
+    color: #000;
+}
+ */
+
+.next_link {
+    float:right;
+}
+
+.prev_link {
+    float:left;
+}
+
+.show_search_change{
+    display: none;
+}
+
+#staff_help {
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius:5px;
+    display: none;
+    margin-bottom: 20px;
+    background-color: rgba(253, 219, 116, 0.05);
+}
+
+
+</style>
+
+<script>
+
+$(function(){
+    let url = "/calendar/";
+    $(".my_shift").attr("title","Your appointment!");
+    $(".worker").attr("title","Has person assigned");
+    $(".unavail").attr("title","Appointment is unavailable for users to claim");
+    $(".cancelled").attr("title","Appointment was cancelled by admin with user attached");
+
+
+    $("#committee_id").change(function(){
+        $(".hide_search_change").hide();
+        $(".show_search_change").fadeIn();
+    });
+    $("#time_of_day").change(function(){
+        $(".hide_search_change").hide();
+        $(".show_search_change").fadeIn();        
+    });
+    $("#go").click(function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        let moveDown = $(window).width() <= 767 ? "/#controls" : "";
+        let commVal = $("#committee_id").val();
+        let timeVal = $("#time_of_day").val();
+        $("#vignette").fadeIn(300, function(){
+            window.location.href= url + 0 + "/" + commVal + "/" + timeVal + "/" + '2025-11-01' + moveDown;
+        });    
+    });
+    
+    
+    
+    
+
+    
+});
+</script>
+
+
+    <title>Join the Coop 
+: Calendar
+</title>
+</head>
+
+
+<body>
+<div id="vignette">Please wait ....</div>
+<header class='main'>
+    <a href="https://foodcoop.com/" target="_blank"><img id="logo" src="/staticfiles/images/logo.png"></a>
+    <div id="site_title" class="lozenge">
+        <a href="/home/">Join the Coop</a>
+        
+        
+        
+        
+    </div>
+   
+    <span class="lozenge user_info">Welcome fedex1!</span> 
+</header>
+
+    <nav class='main'>
+    <ul>
+        <li><a class='' href="/home/">Home</a></li>
+        
+
+            
+                <li><a class='' href="/profile/">1. Profile</a></li>
+                <li><a class='selected' href="/calendar/">2. Calendar</a></li>
+                <li><a href="/logout/">Logout</a></li>
+            
+
+        
+
+    </ul>
+    </nav>
+
+
+<div class='main'>
+
+    
+    <ul class="messages">
+        
+        <li class="error">😔 Sorry, all appointments are currently taken. Please try again some other time. <span  class='message_close'><a href="#">x︎</a></span></li>
+        
+    </ul>
+    
+
+
+
+
+
+    <section class="card"><div class="container">
+    <h2>Appointment Calendar</h2>
+
+    
+        <div class="grid_2up">        
+            <div>
+                <ul>
+<!-- 
+                    <li><p>Use the drop-down menus below to find an appointment that is good for you.
+                    <span class='small'>Filter by appointment type and time of day.</span></p></li>
+ -->
+                    <li><p>Click on or tap an appointment below to read details and sign up.
+                    Your scheduled appointment will appear in the calendar with a ✅ green check mark.</p></li>
+                    
+                    <li><p>Schedule an appointment in advance, up to 30 minutes before the appointment begins.
+                    Cancel as late as 11:59 p.m. the night before.</p></li>
+
+                    <li><p>Appointments generally start Tuesdays at 6pm, Wednesdays at 10:30am & 5pm, and Sundays at 4pm.</p></li>
+
+<!-- 
+                    You may have up to 1 scheduled appointment(s) at a time, 
+                    with no more than 1 appointment(s) on the same date.
+ -->
+                </ul>
+    
+            </div>    
+            <div>
+                
+                    <h5>You Have No Upcoming Appointments</h5>
+                    <p>When you schedule an appointment it will be listed here.</p>
+                
+
+                <p class="small">You can return to your appointment details page and 
+                <b>cancel as late as 11:59 p.m. the night before</b>. 
+                After that point you cannot cancel your appointment.
+                </p>
+            </div>
+        </div> <!-- end grid -->
+        
+    
+
+    </div></section>
+ 
+
+
+<a name="controls"></a>
+
+<section class="card hide_no_paper"><div class="container">
+
+        
+
+        
+<!--             <p class="hide_search_change"><b>Found 0 appointment(s)!</b></p> -->
+        
+        <p class="show_search_change"><b>Please refresh your search results using the "Find appointments" button above.</b></p>
+</div></section>
+
+
+<section class="card hide_search_change hide_no_paper">
+<div class="container">
+
+    <table style="width:100%; margin-bottom:5px; font-size: 10pt;">
+        <td width="33%" align="left">
+            
+        </td>
+            
+        <td width="34%" align="center">
+            
+        </td>
+        
+        <td width="33%" align="right">
+            
+                <a href="/calendar/1/0/0/2025-11-01/">Next&nbsp;Week&nbsp;&rarr;</a>
+            
+        </td>
+
+    </table>
+
+    <div class="grid-container">
+        
+        <div class='col'>
+    
+            
+                <p><b>Sat&nbsp;11/1/2025</b></p>
+            
+
+    
+            <p align="center">-- No appointments --</p>
+    
+            
+
+        </div>
+        
+        <div class='col'>
+    
+            
+                <p><b>Sun&nbsp;11/2/2025</b></p>
+            
+
+    
+            <p align="center">-- No appointments --</p>
+    
+            
+
+        </div>
+        
+        <div class='col'>
+    
+            
+                <p><b>Mon&nbsp;11/3/2025</b></p>
+            
+
+    
+            <p align="center">-- No appointments --</p>
+    
+            
+
+        </div>
+        
+        <div class='col'>
+    
+            
+                <p><b>Tue&nbsp;11/4/2025</b></p>
+            
+
+    
+            <p align="center">-- No appointments --</p>
+    
+            
+
+        </div>
+        
+        <div class='col'>
+    
+            
+                <p><b>Wed&nbsp;11/5/2025</b></p>
+            
+
+    
+            <p align="center">-- No appointments --</p>
+    
+            
+
+        </div>
+        
+        <div class='col'>
+    
+            
+                <p><b>Thu&nbsp;11/6/2025</b></p>
+            
+
+    
+            <p align="center">-- No appointments --</p>
+    
+            
+
+        </div>
+        
+        <div class='col'>
+    
+            
+                <p><b>Fri&nbsp;11/7/2025</b></p>
+            
+
+    
+            <p align="center">-- No appointments --</p>
+    
+            
+
+        </div>
+        
+    </div>
+
+    <table style="width:100%; margin-top:5px; font-size:10pt">
+        <td width="33%" align="left">
+            
+        </td>
+            
+        <td width="34%" align="center">
+            
+        </td>
+        
+        <td width="33%" align="right">
+            
+                <a href="/calendar/1/0/0/2025-11-01/">Next&nbsp;Week&nbsp;&rarr;</a>
+            
+        </td>
+
+    </table>
+
+</div></section>
+
+
+
+</div>
+
+<footer> 
+    <a href="https://foodcoop.com/" target="_blank" class="newtab">Foodcoop.com</a>
+    |
+    <a href="https://foodcoop.com/services" target="_blank" class="newtab">Member Services</a>
+
+    
+    <span style="float:right;opacity:0.25" class="small">Build 1921111 &nbsp;</span>
+</footer>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6P9WTJFDPZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-6P9WTJFDPZ');
+</script>
+</body>
+</html>
