@@ -50,7 +50,7 @@ SHELL=/bin/bash
 30 6 * * * (cd $HOME/github.com/fedex1/campaign-tools/marketing/zipcodes-and-calendar  && . $HOME/.profile && bash -x ./runall_daily.sh) > $HOME/tmp/./campaign-tools-zipcodes-and-calendar-runall_daily.sh.out.txt 2>&1
 
 30 7 * * * (cd $HOME/github.com/fedex1/zohranfornyc-mirror  && . $HOME/.profile && bash -x ./runall.sh) > $HOME/tmp/./zohranfornyc-mirror-runall.sh.out.txt 2>&1
-59 5 * * 1 (cd $HOME/github.com/fedex1/foodcoop-mirror  && . $HOME/.profile && bash -x ./runall.sh) > $HOME/tmp/./foodcoop-mirror-runall.sh.out.txt 2>&1
+59 5 * * * (cd $HOME/github.com/fedex1/foodcoop-mirror  && . $HOME/.profile && bash -x ./runall.sh) > $HOME/tmp/./foodcoop-mirror-runall.sh.out.txt 2>&1
 
 # 0 23 * * * (cd $HOME/github.com/fedex1/prop-marketing/scripts && . $HOME/.profile && ./cron_runall_load_eventbrite_to_typesense.sh)
 
